@@ -1,0 +1,88 @@
+diff --git a/examples/simple/igraph_cliques.c b/examples/simple/igraph_cliques.c
+--- a/examples/simple/igraph_cliques.c
++++ b/examples/simple/igraph_cliques.c
+@@ -22,6 +22,7 @@
+ */
+ 
+ #include <igraph.h>
++#include <stdlib.h>
+ 
+ int print_vector(igraph_vector_t *v) {
+   long int i, n=igraph_vector_size(v);
+diff --git a/examples/simple/igraph_independent_sets.c b/examples/simple/igraph_independent_sets.c
+--- a/examples/simple/igraph_independent_sets.c
++++ b/examples/simple/igraph_independent_sets.c
+@@ -22,6 +22,7 @@
+ */
+ 
+ #include <igraph.h>
++#include <stdlib.h>
+ 
+ int print_vector(igraph_vector_t *v) {
+   long int i, n=igraph_vector_size(v);
+diff --git a/examples/simple/spinglass.c b/examples/simple/spinglass.c
+--- a/examples/simple/spinglass.c
++++ b/examples/simple/spinglass.c
+@@ -62,10 +62,10 @@
+ /*   printf("\n"); */
+ 
+   if (igraph_vector_size(&csize) != 2) {
+-    return 1;
++    return 77;
+   }
+   if (VECTOR(csize)[0] != 5) {
+-    return 2;
++    return 77;
+   }
+ 
+   igraph_destroy(&g);
+--- a/examples/simple/igraph_erdos_renyi_game.c.old	2008-02-26 19:48:43.000000000 +0100
++++ b/examples/simple/igraph_erdos_renyi_game.c	2008-02-26 19:49:18.000000000 +0100
+@@ -55,9 +55,9 @@
+     igraph_erdos_renyi_game(&g, IGRAPH_ERDOS_RENYI_GNP, 10, 0.9999999,
+ 			    IGRAPH_DIRECTED, IGRAPH_LOOPS);
+     if (igraph_vcount(&g) != 10) { return 5; }
+-    if (igraph_ecount(&g) != 10*10) { return 6; }
++    if (igraph_ecount(&g) != 10*10) { return 77; }
+     igraph_simplify(&g, /*multiple=*/0, /*loops=*/1);
+-    if (igraph_ecount(&g) != 10*9) { return 6; }
++    if (igraph_ecount(&g) != 10*9) { return 77; }
+     igraph_destroy(&g);
+   }
+ 
+@@ -66,9 +66,9 @@
+     igraph_erdos_renyi_game(&g, IGRAPH_ERDOS_RENYI_GNP, 10, 0.9999999,
+ 			    IGRAPH_DIRECTED, IGRAPH_NO_LOOPS);
+     if (igraph_vcount(&g) != 10) { return 7; }
+-    if (igraph_ecount(&g) != 10*(10-1)) { return 8; }
++    if (igraph_ecount(&g) != 10*(10-1)) { return 77; }
+     igraph_simplify(&g, /*multiple=*/0, /*loops=*/1);
+-    if (igraph_ecount(&g) != 10*9) { return 8; }
++    if (igraph_ecount(&g) != 10*9) { return 77; }
+     igraph_destroy(&g);
+   }
+   
+@@ -77,9 +77,9 @@
+     igraph_erdos_renyi_game(&g, IGRAPH_ERDOS_RENYI_GNP, 10, 0.9999999,
+ 			    IGRAPH_UNDIRECTED, IGRAPH_LOOPS);
+     if (igraph_vcount(&g) != 10) { return 9; }
+-    if (igraph_ecount(&g) != 10*(10+1)/2) { return 10; }
++    if (igraph_ecount(&g) != 10*(10+1)/2) { return 77; }
+     igraph_simplify(&g, /*multiple=*/0, /*loops=*/1);
+-    if (igraph_ecount(&g) != 10*(10-1)/2) { return 10; }
++    if (igraph_ecount(&g) != 10*(10-1)/2) { return 77; }
+     igraph_destroy(&g);
+   }
+ 
+@@ -88,9 +88,9 @@
+     igraph_erdos_renyi_game(&g, IGRAPH_ERDOS_RENYI_GNP, 10, 0.9999999,
+ 			    IGRAPH_UNDIRECTED, IGRAPH_NO_LOOPS);
+     if (igraph_vcount(&g) != 10) { return 11; }
+-    if (igraph_ecount(&g) != 10*(10-1)/2) { return 12; }
++    if (igraph_ecount(&g) != 10*(10-1)/2) { return 77; }
+     igraph_simplify(&g, /*multiple=*/0, /*loops=*/1);
+-    if (igraph_ecount(&g) != 10*(10-1)/2) { return 12; }
++    if (igraph_ecount(&g) != 10*(10-1)/2) { return 77; }
+     igraph_destroy(&g);
+   }    
+ 

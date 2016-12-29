@@ -1,0 +1,44 @@
+diff --git a/src/bliss_graph.cc b/src/bliss_graph.cc
+--- a/src/bliss_graph.cc
++++ b/src/bliss_graph.cc
+@@ -25,6 +25,7 @@
+ #include "bliss_timer.hh"
+ #include "bliss_graph.hh"
+ #include "bliss_partition.hh"
++#include <limits.h>		// INT_MAX,etc
+ 
+ namespace igraph {
+ 
+diff --git a/src/bliss_kqueue.hh b/src/bliss_kqueue.hh
+--- a/src/bliss_kqueue.hh
++++ b/src/bliss_kqueue.hh
+@@ -19,6 +19,7 @@
+ #define KQUEUE_HH
+ 
+ #include "bliss_defs.hh"
++#include <cstdlib>		// malloc
+ 
+ namespace igraph {
+ 
+diff --git a/src/bliss_kstack.hh b/src/bliss_kstack.hh
+--- a/src/bliss_kstack.hh
++++ b/src/bliss_kstack.hh
+@@ -19,6 +19,7 @@
+ #define KSTACK_H
+ 
+ #include "bliss_defs.hh"
++#include <cstdlib>		// malloc
+ 
+ namespace igraph {
+ 
+diff --git a/src/walktrap_graph.cpp b/src/walktrap_graph.cpp
+--- a/src/walktrap_graph.cpp
++++ b/src/walktrap_graph.cpp
+@@ -29,6 +29,7 @@
+ #include <fstream>
+ #include <sstream>
+ #include <algorithm>
++#include <cstring>		// strlen
+ #include "walktrap_graph.h"
+ 
+ using namespace std;

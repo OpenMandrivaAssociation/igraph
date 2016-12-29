@@ -1,0 +1,10 @@
+--- igraph-0.5.1/src/drl_parse.cpp~	2008-07-31 15:23:46.000000000 -0400
++++ igraph-0.5.1/src/drl_parse.cpp	2009-02-26 14:18:30.000000000 -0500
+@@ -4,6 +4,7 @@
+ #include <iostream>
+ #include <map>
+ #include <cstdlib>
++#include <cstdio>
+ 
+ using namespace std;
+ 
