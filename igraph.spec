@@ -8,7 +8,7 @@ Release:	3
 Summary:	Library for creating and manipulating graphs
 Group:		Development/C
 License:	GPLv2+
-URL:		http://igraph.sourceforge.net/
+URL:		https://igraph.sourceforge.net/
 Source0:    http://igraph.org/nightly/get/c/%{name}-%{version}.tar.gz
 Source1:    http://igraph.org/c/doc/igraph.info
 
