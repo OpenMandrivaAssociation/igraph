@@ -12,6 +12,11 @@ URL:		https://igraph.sourceforge.net/
 Source0:    http://igraph.org/nightly/get/c/%{name}-%{version}.tar.gz
 Source1:    http://igraph.org/c/doc/igraph.info
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libxml2-devel
 BuildRequires:	gmp-devel
 Requires(post): /sbin/install-info
