@@ -4,7 +4,7 @@
 
 Name:		igraph
 Version:	0.7.1
-Release:	3
+Release:	4
 Summary:	Library for creating and manipulating graphs
 Group:		Development/C
 License:	GPLv2+
