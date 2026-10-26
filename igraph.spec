@@ -53,8 +53,9 @@ documentation needed to develop application with %{name}.
 
 %prep
 %setup -q
-# %configure regenerates configure from configure.ac. On success the
-# libxml probe copies CFLAGS into CPPFLAGS, so -std=gnu17 reaches c++.
+# configure is regenerated from configure.ac. On success the libxml
+# probe copies CFLAGS into CPPFLAGS, so -std=gnu17 reaches c++.
+# Do not mention the configure macro here: rpm would expand it.
 sed -i 's/CPPFLAGS="${OLDCFLAGS} ${XML2_CFLAGS}"/CPPFLAGS="${OLDCPPFLAGS} ${XML2_CFLAGS}"/' configure.ac configure
 
 %build
