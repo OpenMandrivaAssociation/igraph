@@ -53,11 +53,11 @@ documentation needed to develop application with %{name}.
 
 %build
 %configure
-make %{?_smp_mflags}
+make %{?_smp_mflags} LIBTOOL=slibtool-shared
 
 
 %install
-%make_install
+%make_install LIBTOOL=slibtool-shared
 install -Dm0644 doc/igraph.3 %{buildroot}/%{_mandir}/man3/igraph.3
 install -Dm0644 %{SOURCE1} %{buildroot}/%{_infodir}/igraph.info
 find . -name '.arch-ids' | xargs rm -rf
