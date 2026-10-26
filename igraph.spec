@@ -1,6 +1,8 @@
 # The LTO configure workaround rewrites this ancient libtool script into a
 # command that starts with -e, so the shared library is never produced.
 %global _disable_lto 1
+# clang rejects the bundled gengraph headers' register variables as C++17.
+%global optflags %{optflags} -Wno-register
 
 %define major   0
 %define libname %mklibname %{name} %{major}
