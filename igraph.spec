@@ -2,9 +2,7 @@
 # command that starts with -e, so the shared library is never produced.
 %global _disable_lto 1
 # clang rejects the bundled gengraph headers' register variables as C++17.
-# qsort.c is still K&R, which C23 rejects.
-# -std=gnu17 is not valid for C++. qsort.c still needs it, so it is
-# added to CFLAGS only, below.
+# qsort.c is still K&R, which C23 rejects. -std=gnu17 is not valid for C++.
 %global optflags %{optflags} -Wno-register
 
 %define major   0
@@ -57,9 +55,13 @@ documentation needed to develop application with %{name}.
 %setup -q
 
 %build
+# qsort.c is K&R. f2c calls feenableexcept, which needs _GNU_SOURCE.
+# -std=gnu17 must stay off CXXFLAGS.
+export ac_cv_prog_cc_c23='none needed'
+export CFLAGS="%{optflags} -std=gnu17 -D_GNU_SOURCE"
+export CXXFLAGS="%{optflags}"
 %configure
-# qsort.c is K&R. C23 rejects it, and -std=gnu17 must not reach g++.
-make %{?_smp_mflags} CFLAGS="%{optflags} -std=gnu17" LIBTOOL=slibtool-shared
+make %{?_smp_mflags} LIBTOOL=slibtool-shared
 
 
 %install
