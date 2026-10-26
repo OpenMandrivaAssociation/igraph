@@ -3,7 +3,9 @@
 %global _disable_lto 1
 # clang rejects the bundled gengraph headers' register variables as C++17.
 # qsort.c is still K&R, which C23 rejects.
-%global optflags %{optflags} -Wno-register -std=gnu17
+# -std=gnu17 is not valid for C++. qsort.c still needs it, so it is
+# added to CFLAGS only, below.
+%global optflags %{optflags} -Wno-register
 
 %define major   0
 %define libname %mklibname %{name} %{major}
@@ -56,7 +58,8 @@ documentation needed to develop application with %{name}.
 
 %build
 %configure
-make %{?_smp_mflags} LIBTOOL=slibtool-shared
+# qsort.c is K&R. C23 rejects it, and -std=gnu17 must not reach g++.
+make %{?_smp_mflags} CFLAGS="%{optflags} -std=gnu17" LIBTOOL=slibtool-shared
 
 
 %install
