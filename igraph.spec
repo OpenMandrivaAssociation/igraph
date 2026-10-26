@@ -57,7 +57,8 @@ documentation needed to develop application with %{name}.
 %build
 # qsort.c is K&R. f2c calls feenableexcept, which needs _GNU_SOURCE.
 # -std=gnu17 must stay off CXXFLAGS.
-export ac_cv_prog_cc_c23='none needed'
+# Empty means "none needed". The words "none needed" are appended to CC.
+export ac_cv_prog_cc_c23=
 export CFLAGS="%{optflags} -std=gnu17 -D_GNU_SOURCE"
 export CXXFLAGS="%{optflags}"
 %configure
