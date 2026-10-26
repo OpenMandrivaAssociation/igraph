@@ -2,7 +2,8 @@
 # command that starts with -e, so the shared library is never produced.
 %global _disable_lto 1
 # clang rejects the bundled gengraph headers' register variables as C++17.
-%global optflags %{optflags} -Wno-register
+# qsort.c is still K&R, which C23 rejects.
+%global optflags %{optflags} -Wno-register -std=gnu17
 
 %define major   0
 %define libname %mklibname %{name} %{major}
