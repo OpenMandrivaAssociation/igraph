@@ -53,8 +53,9 @@ documentation needed to develop application with %{name}.
 
 %prep
 %setup -q
-# configure copies CFLAGS into CPPFLAGS. -std=gnu17 then reaches c++.
-sed -i 's/CPPFLAGS="${OLDCFLAGS} ${XML2_CFLAGS}"/CPPFLAGS="${OLDCPPFLAGS} ${XML2_CFLAGS}"/' configure
+# %configure regenerates configure from configure.ac. On success the
+# libxml probe copies CFLAGS into CPPFLAGS, so -std=gnu17 reaches c++.
+sed -i 's/CPPFLAGS="${OLDCFLAGS} ${XML2_CFLAGS}"/CPPFLAGS="${OLDCPPFLAGS} ${XML2_CFLAGS}"/' configure.ac configure
 
 %build
 # qsort.c is K&R. f2c calls feenableexcept, which needs _GNU_SOURCE.
