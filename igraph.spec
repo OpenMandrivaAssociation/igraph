@@ -39,17 +39,24 @@ algorithms like: maximum flows, graph isomorphism, scale-free
 networks, community structure finding, etc.
 
 %package -n %devname
-Requires:  %libname = %{version}-%{release}
-Requires:  pkgconfig
-Provides: igraph-devel
+Requires:	%libname = %{EVRD}
+Requires:	pkgconfig
+Provides:	igraph-devel
 
-Summary:   Development files for igraph
+Summary:	Development files for igraph
 
 %description -n %devname
 The %{name}-devel package contains the header files and some
 documentation needed to develop application with %{name}.
 
-%libpackage %name %major
+# The two-argument library helper names this package without the soname
+# major and obsoletes the published lib64igraph0 name. Declare it directly.
+%package -n %libname
+Summary:	The igraph library
+Group:		System/Libraries
+
+%description -n %libname
+The igraph library, a part of igraph.
 
 %prep
 %setup -q
@@ -77,6 +84,9 @@ find . -name '.arch-ids' | xargs rm -rf
 
 %check
 make check || :
+
+%files -n %libname
+%{_libdir}/libigraph.so.%{major}*
 
 %files -n %devname
 %doc COPYING AUTHORS NEWS README
